@@ -1,0 +1,27 @@
+type Gift {
+  id: ID!
+  name: String!
+  events: [Event] 
+}
+
+input CreateGiftInput {
+  name: String
+  events: [CreateEventInput]
+}
+
+input UpdateGiftInput {
+  id: Int!
+  name: String
+  events: [UpdateEventInput]
+}
+
+type Query {
+  gifts: [Gift]!
+  gift(id: Int!): Gift
+}
+
+type Mutation {
+  createGift(createGiftInput: CreateGiftInput!): Gift!
+  updateGift(updateGiftInput: UpdateGiftInput!): Gift!
+  removeGift(id: Int!): String
+}

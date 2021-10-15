@@ -1,0 +1,30 @@
+type Event {
+  id: ID!
+  name: String!
+  description: String
+  gifts: [Gift]
+}
+
+input CreateEventInput {
+  name: String
+  description: String
+  gifts: [CreateGiftInput]
+}
+
+input UpdateEventInput {
+  id: Int!
+  name: String
+  description: String
+  gifts: [UpdateGiftInput]
+}
+
+type Query {
+  events: [Event]!
+  event(id: Int!): Event
+}
+
+type Mutation {
+  createEvent(createEventInput: CreateEventInput!): Event!
+  updateEvent(updateEventInput: UpdateEventInput!): Event!
+  removeEvent(id: Int!): String
+}
